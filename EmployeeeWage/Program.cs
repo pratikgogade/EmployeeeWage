@@ -39,6 +39,12 @@ namespace EmployeeeWage
                         Console.WriteLine("Employee is absent");
                         break;
                 }
+                int days = 0;
+                while (days < 20)
+                {
+                    Console.WriteLine("Total Wages Are " + days);
+                    days++;
+                }
                 empwage = empHrs * Emp_Rate_Per_Hour;
                 totalempwage += empwage;
                 Console.WriteLine("Employee Wage:" + empwage);

@@ -4,20 +4,14 @@ namespace EmployeeeWage
 {
     internal class Program
     {
-
-
         public const int FullTime = 1;
         public const int PartTime = 2;
-        public const int EmpRatePerHr = 20;
-        public const int NumberofWorkingDays = 20;
-        public const int MaxHrsInMonth = 100;
 
 
-        static void Main(string[] args)
+
+        public static int computeEmpWage(string company, int EmpRatePerHr, int NumberofWorkingDays, int MaxHrsInMonth)
         {
-            int EmpHrs = 0;
-            int TotalEmpHrs = 0;
-            int totalworkingdays = 0;
+            int EmpHrs = 0, TotalEmpHrs = 0, totalworkingdays = 0;
 
             while (TotalEmpHrs <= MaxHrsInMonth && totalworkingdays < NumberofWorkingDays)
 
@@ -45,8 +39,13 @@ namespace EmployeeeWage
             int TotalEmpWage = TotalEmpHrs * EmpRatePerHr;
 
             Console.WriteLine("total employee wage:" + TotalEmpWage);
+            return TotalEmpWage;
 
         }
-
+        static void Main(string[] args)
+        {
+            computeEmpWage("LNT", 20, 28, 100);
+            computeEmpWage("Relaince", 25, 30, 110);
+        }
     }
 }

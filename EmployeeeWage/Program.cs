@@ -4,52 +4,48 @@ namespace EmployeeeWage
 {
     internal class Program
     {
+
+
+        public const int FullTime = 1;
+        public const int PartTime = 2;
+        public const int EmpRatePerHr = 20;
+        public const int NumberofWorkingDays = 20;
+        public const int MaxHrsInMonth = 100;
+
+
         static void Main(string[] args)
         {
-            int fullTime = 1, partTime = 2, Emp_Rate_Per_Hour = 20, empHrs = 0, empwage = 0, Emp_Working_Days = 20, totalempwage = 0;
-            for (int day = 0; day <= Emp_Working_Days; day++)
+            int EmpHrs = 0;
+            int TotalEmpHrs = 0;
+            int totalworkingdays = 0;
+
+            while (TotalEmpHrs <= MaxHrsInMonth && totalworkingdays < NumberofWorkingDays)
+
             {
-                Random randobj = new Random();
-                int checkPresent = randobj.Next(0, 3);
-                Console.WriteLine("Random number=" + checkPresent);
-                if (checkPresent == fullTime)
+                totalworkingdays++;
+                Random random = new Random();
+                int empcheck = random.Next(0, 3);
+
+                switch (empcheck)
                 {
-                    empHrs = 8;
-                    Console.WriteLine("Employee is present");
-                }
-                else if (checkPresent == partTime)
-                {
-                    empHrs = 4;
-                    Console.WriteLine("Employee is present");
-                }
-                else
-                {
-                    empHrs = 0;
-                    Console.WriteLine("Employee is absent");
-                }
-                switch (checkPresent)
-                {
-                    case 1:
-                        Console.WriteLine("Employee is fulltime");
+                    case PartTime:
+                        EmpHrs = 4;
                         break;
-                    case 2:
-                        Console.WriteLine("Employee is parttime");
+                    case FullTime:
+                        EmpHrs = 8;
                         break;
                     default:
-                        Console.WriteLine("Employee is absent");
+                        EmpHrs = 0;
                         break;
                 }
-                int days = 0;
-                while (days < 20)
-                {
-                    Console.WriteLine("Total Wages Are " + days);
-                    days++;
-                }
-                empwage = empHrs * Emp_Rate_Per_Hour;
-                totalempwage += empwage;
-                Console.WriteLine("Employee Wage:" + empwage);
+
+                TotalEmpHrs = TotalEmpHrs + EmpHrs;
+                Console.WriteLine("day:" + totalworkingdays + " employee hours: " + EmpHrs);
             }
-            Console.WriteLine("Total Wage " + totalempwage);
+            int TotalEmpWage = TotalEmpHrs * EmpRatePerHr;
+
+            Console.WriteLine("total employee wage:" + TotalEmpWage);
+
         }
 
     }
